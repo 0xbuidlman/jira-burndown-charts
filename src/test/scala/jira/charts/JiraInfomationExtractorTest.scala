@@ -1,7 +1,7 @@
-package jira.burndown
+package jira.charts
 
 import org.scalatest.{FlatSpec, FlatSpecLike, ShouldMatchers, FunSuite}
-import jira.burndown.jsonwrappers._
+import jira.charts.jsonwrappers._
 
 class JiraInfomationExtractorTest extends FlatSpec
   with FlatSpecLike

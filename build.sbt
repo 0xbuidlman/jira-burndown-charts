@@ -5,7 +5,7 @@ seq(Revolver.settings: _*)
 
 lazy val buildSettings = Seq(
   version := "0.1-SNAPSHOT",
-  organization := "jira.burndown",
+  organization := "jira.charts",
   scalaVersion := "2.10.1"
 )
 

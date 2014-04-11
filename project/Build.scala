@@ -23,7 +23,7 @@ import net.virtualvoid.sbt._
 
 object ApplicationBuild extends Build {
 
-  val appName         = """react-mip"""
+  val appName         = """jira-charts"""
   val appVersion      = "0.0.1-SNAPSHOT"
   val appScalaVersion = "2.10.3"
 
@@ -71,8 +71,8 @@ object ApplicationBuild extends Build {
     .settings(graph.Plugin.graphSettings: _*)
     .settings(
       name := appName,
-      mainClass := Some("jira.burndown.Runner"),
-      mainClass in assembly := Some("jira.burndown.runner"),
+      mainClass := Some("jira.charts.Runner"),
+      mainClass in assembly := Some("jira.charts.runner"),
         libraryDependencies ++= generalDependencies ++
         testingIt ++
         sprayAll ++

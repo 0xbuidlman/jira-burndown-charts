@@ -1,4 +1,4 @@
-package jira.burndown.config
+package jira.charts.config
 
 import com.typesafe.config.ConfigFactory
 

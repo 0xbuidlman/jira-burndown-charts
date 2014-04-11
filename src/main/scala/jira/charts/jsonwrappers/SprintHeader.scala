@@ -1,4 +1,4 @@
-package jira.burndown.jsonwrappers
+package jira.charts.jsonwrappers
 
 import spray.json.DefaultJsonProtocol
 

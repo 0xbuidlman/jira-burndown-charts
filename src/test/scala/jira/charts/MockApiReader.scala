@@ -1,6 +1,6 @@
-package jira.burndown
+package jira.charts
 
-import jira.burndown.jsonwrappers.ApiReader
+import jira.charts.jsonwrappers.ApiReader
 import scala.io.Source
 
 trait MockApiReader extends ApiReader {

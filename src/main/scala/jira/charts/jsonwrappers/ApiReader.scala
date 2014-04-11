@@ -1,7 +1,7 @@
-package jira.burndown.jsonwrappers
+package jira.charts.jsonwrappers
 
 import scala.io.Source
-import jira.burndown.config.DefaultConfig
+import jira.charts.config.DefaultConfig
 
 trait ApiReader extends DefaultConfig  {
 

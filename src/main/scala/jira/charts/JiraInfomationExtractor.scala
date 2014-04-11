@@ -1,12 +1,12 @@
-package jira.burndown
+package jira.charts
 
-import jira.burndown.jsonwrappers._
+import jira.charts.jsonwrappers._
 import scala.io.Source
 import spray.json.{JsObject, JsonParser, JsValue}
-import jira.burndown.jsonwrappers.ProjectHeader
-import jira.burndown.jsonwrappers.SprintHeader
+import jira.charts.jsonwrappers.ProjectHeader
+import jira.charts.jsonwrappers.SprintHeader
 import com.typesafe.config.Config
-import jira.burndown.config.JiraChartingConfig
+import jira.charts.config.JiraChartingConfig
 
 class JiraInfomationExtractor {
   this: ApiReader =>
