@@ -1,10 +1,11 @@
 package jira.charts
 
-import akka.actor.{Props, ActorSystem}
+import akka.actor.{ActorContext, Props, ActorSystem}
 import akka.io.IO
 import spray.can.Http
 import jira.charts.service.RouteDispatcherActor
 import java.security.cert.X509Certificate
+import jira.charts.tracking.TrackingAPI
 
 object Main extends App {
 
@@ -12,10 +13,12 @@ object Main extends App {
 
   implicit val system = ActorSystem()
 
-
+  val api = new ApiActors(system)
 
   // create and start our service actor
-  val service = system.actorOf(Props[RouteDispatcherActor], "route-service")
+  val service = system.actorOf(Props(new RouteDispatcherActor{
+   val trackingApi = api.trackingApi
+  }), "route-service")
 
   // start a new HTTP server on port 8080 with our service actor as the handler
   IO(Http) ! Http.Bind(service, interface = "0.0.0.0", port = 8080)
@@ -44,4 +47,8 @@ object Main extends App {
       case ex: Throwable => "boo hoo something went wrong..."
     }
   }
+}
+class ApiActors(system: ActorSystem){
+  val trackingApi = system.actorOf(Props(new TrackingAPI), "TrackingAPI")
+
 }

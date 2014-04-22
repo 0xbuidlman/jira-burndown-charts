@@ -3,12 +3,11 @@ package jira.charts.service
 import spray.json.DefaultJsonProtocol
 import spray.httpx.SprayJsonSupport
 import spray.routing.HttpServiceActor
-import jira.charts.JiraInfomationExtractor
-import jira.charts.jsonwrappers.SprintBurndownSummary
 import jira.charts.tracking.TrackingService
+import akka.actor.ActorRef
 
-class RouteDispatcherActor extends HttpServiceActor with TrackingService {
-
+abstract class RouteDispatcherActor extends HttpServiceActor with TrackingService {
+  def trackingApi: ActorRef
   def receive = runRoute(trackingRoute)
 
 }

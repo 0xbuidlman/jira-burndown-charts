@@ -71,8 +71,8 @@ object ApplicationBuild extends Build {
     .settings(graph.Plugin.graphSettings: _*)
     .settings(
       name := appName,
-      mainClass := Some("jira.charts.Runner"),
-      mainClass in assembly := Some("jira.charts.runner"),
+      mainClass := Some("jira.charts.Main"),
+      mainClass in assembly := Some("jira.charts.Main"),
         libraryDependencies ++= generalDependencies ++
         testingIt ++
         sprayAll ++
