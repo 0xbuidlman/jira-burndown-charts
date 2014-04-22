@@ -12,9 +12,7 @@ You will need to configure the API endpoints in the application.conf file
 
 Using
 =====
-Currently, this is a standalone app that requies you to use sbt to compile and run. 
-
-From there, serve index.html and burndown.json from your favourite server.
+The project uses spray and Akka to server the web content. Simply export to a jar to get the app running on localhost, and hit the /track/[project name] url to see a graph
 
 Preview
 =======
