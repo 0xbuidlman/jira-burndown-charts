@@ -5,7 +5,7 @@ import akka.io.IO
 import spray.can.Http
 import jira.charts.service.RouteDispatcherActor
 import java.security.cert.X509Certificate
-import jira.charts.tracking.TrackingAPI
+import jira.charts.api.tracking.{BurnupApi, TrackingApi}
 
 object Main extends App {
 
@@ -18,6 +18,7 @@ object Main extends App {
   // create and start our service actor
   val service = system.actorOf(Props(new RouteDispatcherActor{
    val trackingApi = api.trackingApi
+   val burnupApi = api.burnupApi
   }), "route-service")
 
   // start a new HTTP server on port 8080 with our service actor as the handler
@@ -49,6 +50,7 @@ object Main extends App {
   }
 }
 class ApiActors(system: ActorSystem){
-  val trackingApi = system.actorOf(Props(new TrackingAPI), "TrackingAPI")
+  val trackingApi = system.actorOf(Props(new TrackingApi), "TrackingAPI")
+  val burnupApi = system.actorOf(Props(new BurnupApi), "burnupApi")
 
 }

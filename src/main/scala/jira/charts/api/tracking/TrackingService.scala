@@ -1,8 +1,8 @@
-package jira.charts.tracking
+package jira.charts.api.tracking
 
 import spray.routing.HttpService
-import jira.charts.service.JsonService
-import jira.charts.jsonwrappers.OutputContainer
+import jira.charts.service.{DefaultTimeout, JsonService}
+import jira.charts.jsonwrappers.TrackingOutputContainer
 import spray.http.MediaTypes._
 import scala.io.Source
 import akka.actor.ActorRef
@@ -12,10 +12,9 @@ import java.util.concurrent.TimeUnit
 import scala.concurrent.ExecutionContext
 import reflect.ClassTag
 
-trait TrackingService extends HttpService with JsonService {
+trait TrackingService extends HttpService with JsonService with DefaultTimeout{
   def trackingApi: ActorRef
 
-  implicit val timeout = Timeout(50000, TimeUnit.SECONDS)
 
 
   //  val api = new TrackingAPI
@@ -25,10 +24,10 @@ trait TrackingService extends HttpService with JsonService {
         get {
           complete {
             import ExecutionContext.Implicits.global
-            import jira.charts.jsonwrappers.OutputContainerProtocol._
-            val future = (trackingApi ? project).mapTo[OutputContainer]
+            import jira.charts.jsonwrappers.TrackingOutputContainerProtocol._
+            val future = (trackingApi ? project).mapTo[TrackingOutputContainer]
             future map {
-              response: OutputContainer => response
+              response: TrackingOutputContainer => response
             }
           }
         }

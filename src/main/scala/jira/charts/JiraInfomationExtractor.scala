@@ -68,15 +68,15 @@ class JiraInfomationExtractor {
       case _ => Nil
     }
 
-    def average(items: List[SprintBurndownSummary]): Double = {
-      val points = items map {item: SprintBurndownSummary => item.points }
-      points.sum.toDouble / items.length
-    }
 
     val withEmptyItems = addEmptyItems(items, period)
 
     calculateAverage(withEmptyItems, period)
 
 
+  }
+  def average(items: List[SprintBurndownSummary]): Double = {
+    val points = items map {item: SprintBurndownSummary => item.points }
+    points.sum.toDouble / items.length
   }
 }
